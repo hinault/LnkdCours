@@ -28,7 +28,7 @@ namespace LnkdCours
             services.AddControllersWithViews();
 
             services.AddDbContext<LnkdCoursContext>(options =>
-                    options.UseSqlite("Data Source=localdb.db"));
+                    options.UseSqlite(Configuration.GetConnectionString("LocalConnectionStrings")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
