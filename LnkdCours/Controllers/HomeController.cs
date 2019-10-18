@@ -25,6 +25,9 @@ namespace LnkdCours.Controllers
         public IActionResult Index()
         {
             ViewBag.BgColor = _config.GetValue<string>("BgColor");
+
+            ViewBag.Region = _config.GetValue<string>("Region");
+
             return View();
         }
 
