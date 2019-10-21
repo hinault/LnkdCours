@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace LnkdCours.Migrations
 {
-    public partial class InitialMigration : Migration
+    public partial class Initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -12,6 +12,7 @@ namespace LnkdCours.Migrations
                 columns: table => new
                 {
                     ID = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1")
                         .Annotation("Sqlite:Autoincrement", true),
                     Email = table.Column<string>(nullable: false),
                     Comment = table.Column<string>(nullable: false),
