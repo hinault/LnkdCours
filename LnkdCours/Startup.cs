@@ -27,17 +27,12 @@ namespace LnkdCours
         {
             services.AddControllersWithViews();
 
-            if(Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") == "Production")
-            {
+           
                 services.AddDbContext<LnkdCoursContext>(options =>
                    options.UseSqlServer(Configuration.GetConnectionString("AzureConnectionStrings")));
 
 
-            }
-            else
-
-            services.AddDbContext<LnkdCoursContext>(options =>
-                    options.UseSqlite(Configuration.GetConnectionString("LocalConnectionStrings")));
+           
 
             services.BuildServiceProvider()
                 .GetService<LnkdCoursContext>().Database

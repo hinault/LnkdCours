@@ -12,6 +12,8 @@ namespace LnkdCours.Data
         public LnkdCoursContext(DbContextOptions<LnkdCoursContext> options)
                     : base(options)
         {
+            var conn = (Microsoft.Data.SqlClient.SqlConnection)Database.GetDbConnection();
+            conn.AccessToken = (new Microsoft.Azure.Services.AppAuthentication.AzureServiceTokenProvider()).GetAccessTokenAsync("https://database.windows.net/").Result;
         }
 
         public DbSet<FeedBack> FeedBacks { get; set; }
