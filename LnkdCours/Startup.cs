@@ -33,7 +33,7 @@ namespace LnkdCours
             services.AddStackExchangeRedisCache(options =>
             {
                 options.Configuration = Configuration.GetConnectionString("RedisConnection");
-                options.InstanceName = "lnkdcachetest";
+                options.InstanceName = "lnkdcache";
             }
                 );
 
