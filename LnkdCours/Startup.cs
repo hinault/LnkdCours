@@ -29,7 +29,7 @@ namespace LnkdCours
 
            
                 services.AddDbContext<LnkdCoursContext>(options =>
-                   options.UseSqlServer(Configuration.GetConnectionString("AzureConnectionStrings")));
+                   options.UseSqlServer(Configuration.GetConnectionString("AzureConnection")));
 
 
            
