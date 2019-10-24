@@ -30,7 +30,7 @@ namespace LnkdCours.Controllers
             
             
             ViewData["CacheDateTime"] = null;
-            ViewData["CurrentDateTime"] = DateTime.Now.ToString();
+           
             
             return View();
         }
