@@ -46,10 +46,8 @@ namespace LnkdCours.Controllers
                 _cache.SetString("CacheDateTime", value, options);
             }
 
-            ViewData["CacheDateTime"] = value;
-            ViewData["CurrentTime"] = DateTime.Now.ToString();
-
-
+            ViewData["CacheDateTime"] = null;
+          
             return View();
         }
 
