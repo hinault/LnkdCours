@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using LnkdCours.Models;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Caching.Distributed;
 
 namespace LnkdCours.Controllers
 {
@@ -16,10 +17,13 @@ namespace LnkdCours.Controllers
 
         private readonly IConfiguration _config;
 
-        public HomeController(ILogger<HomeController> logger, IConfiguration config)
+        private readonly IDistributedCache _cache;
+
+        public HomeController(ILogger<HomeController> logger, IConfiguration config, IDistributedCache cache)
         {
             _logger = logger;
             _config = config;
+            _cache = cache;
         }
 
         public IActionResult Index()
@@ -27,6 +31,24 @@ namespace LnkdCours.Controllers
             ViewBag.BgColor = _config.GetValue<string>("BgColor");
 
             ViewBag.Region = _config.GetValue<string>("Region");
+
+
+            string value = _cache.GetString("CacheDateTime");
+
+            if (value == null)
+            {
+                value = DateTime.Now.ToString();
+
+                var options = new DistributedCacheEntryOptions { 
+                SlidingExpiration = TimeSpan.FromMinutes(1)
+                };
+ 
+                _cache.SetString("CacheDateTime", value, options);
+            }
+
+            ViewData["CacheDateTime"] = value;
+            ViewData["CurrentTime"] = DateTime.Now.ToString();
+
 
             return View();
         }
