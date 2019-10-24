@@ -27,7 +27,11 @@ namespace LnkdCours.Controllers
             ViewBag.BgColor = _config.GetValue<string>("BgColor");
 
             ViewBag.Region = _config.GetValue<string>("Region");
-
+            
+            
+            ViewData["CacheDateTime"] = null;
+            ViewData["CurrentDateTime"] = DateTime.Now.ToString();
+            
             return View();
         }
 
