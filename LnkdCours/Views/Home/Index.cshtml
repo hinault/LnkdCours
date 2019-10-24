@@ -18,6 +18,10 @@
         </div>
         <div class="col-sm bg-light border">
             <p>Démo Azure Redis cache</p>
+            <ul>
+                <li>Date et heure actuelle : @DateTime.Now.ToString()</li>
+                <li>Date et heure en cache : @ViewData["CacheDateTime"]</li>
+            </ul>
         </div>
     </div>
 </div>
